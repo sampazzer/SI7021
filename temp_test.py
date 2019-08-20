@@ -1,3 +1,5 @@
+#This adds my SI7021 class and returns the temperature and humidity to the console
+
 from mySI7021 import temp_humid
 
 th_sensor = temp_humid()
