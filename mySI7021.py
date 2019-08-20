@@ -1,6 +1,6 @@
 #---SI7021 CLASS---#
 
-from smbus2 import SMBus, i2c_msg, SMBusWrapper
+from smbus2 import SMBus, i2c_msg
 import time
 
 
@@ -19,7 +19,7 @@ class temp_humid:
         Temperature then reads as a temp reading is taken by the sensor for compensation for humidity reading
         """
         #---HUMIDITY I2C WRITE READ---#
-        with SMBusWrapper(1) as bus:
+        with SMBus(1) as bus:
             self.humidity_write = i2c_msg.write(self.address,[self.humidityCommand])
             self.humidity_read = i2c_msg.read(self.address,2)
             bus.i2c_rdwr(self.humidity_write)
@@ -27,7 +27,7 @@ class temp_humid:
             bus.i2c_rdwr(self.humidity_read)
 
         #---TEMP I2C WRITE READ---#
-        with SMBusWrapper(1) as bus:
+        with SMBus(1) as bus:
             self.temp_write = i2c_msg.write(self.address,[self.tempCommand])
             self.temp_read = i2c_msg.read(self.address,2)
             bus.i2c_rdwr(self.temp_write)
