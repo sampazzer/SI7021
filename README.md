@@ -1,0 +1,1 @@
+My SI7021 sensor class using SMBus2 package.
