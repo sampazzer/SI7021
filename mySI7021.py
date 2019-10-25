@@ -23,7 +23,7 @@ class temp_humid:
             self.humidity_write = i2c_msg.write(self.address,[self.humidityCommand])
             self.humidity_read = i2c_msg.read(self.address,2)
             bus.i2c_rdwr(self.humidity_write)
-            time.sleep(0.35)
+            time.sleep(0.35) #Adds some time between the write and read. This was required for good reads.
             bus.i2c_rdwr(self.humidity_read)
 
         #---TEMP I2C WRITE READ---#
